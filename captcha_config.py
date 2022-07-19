@@ -1,1 +1,1 @@
-key = "YOUR 2CAPTCHA API KEY"
+key = "6d0020aeb68e43f297a03656dddf884d"
