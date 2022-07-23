@@ -36,10 +36,7 @@ chrome.proxy.settings.set({value: config, scope: "regular"}, function() {});
 
 function callbackFn(details) {
     return {
-        authCredentials: {
-            username: "%s",
-            password: "%s"
-        }
+        authCredentials:
     };
 }
 
